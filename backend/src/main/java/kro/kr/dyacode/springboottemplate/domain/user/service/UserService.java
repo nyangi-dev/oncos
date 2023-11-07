@@ -21,7 +21,7 @@ public class UserService {
     public void create(UserDto.Request userDto) throws Exception {
         String plainPassword = userDto.getPassword();
         String encryptedPassword = BCrypt.hashpw(plainPassword, BCrypt.gensalt());
-        Image image = imageUploader.upload(userDto.getImage(), "user");
+        Image image = imageUploader.upload(userDto.getAvatar(), "user");
 
         userDto.setPassword(encryptedPassword);
         User user = new User(userDto, image.getStorePath());
@@ -30,20 +30,20 @@ public class UserService {
 
     // readMe
     public UserDto.Response readMe(String token) throws NotFoundException {
-        return new UserDto.Response(userRepository.findById(jwtTokenService.getId(token)).orElseThrow(NotFoundException::new)); 
+        return new UserDto.Response(userRepository.findById(jwtTokenService.getId(token)).orElseThrow(NotFoundException::new));
     }
 
     // readOne
-    public UserDto.Response read(Long id) throws NotFoundException {
+    public UserDto.Response read(String id) throws NotFoundException {
         return new UserDto.Response(userRepository.findById(id).orElseThrow(NotFoundException::new));
     }
 
     // update
-    public void update(Long id, UserDto.Request userDto) throws Exception {
+    public void update(String id, UserDto.Request userDto) throws Exception {
         User user = userRepository.findById(id).orElseThrow(NotFoundException::new);
         String plainPassword = userDto.getPassword();
         String encryptedPassword = BCrypt.hashpw(plainPassword, BCrypt.gensalt());
-        Image image = imageUploader.upload(userDto.getImage(), "user");
+        Image image = imageUploader.upload(userDto.getAvatar(), "user");
 
         userDto.setPassword(encryptedPassword);
         user.update(userDto, image.getStorePath());
@@ -51,7 +51,7 @@ public class UserService {
     }
 
     // delete
-    public void delete(Long id) {
+    public void delete(String id) {
         userRepository.deleteById(id);
     }
 

@@ -37,20 +37,20 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> read(@PathVariable(name = "id") Long id) throws NotFoundException {
+    public ResponseEntity<?> read(@PathVariable(name = "id") String id) throws NotFoundException {
         UserDto.Response userDto = userService.read(id);
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<HttpStatus> update(@PathVariable(name = "id") Long id, UserDto.Request userDto)
+    public ResponseEntity<HttpStatus> update(@PathVariable(name = "id") String id, UserDto.Request userDto)
             throws Exception {
         userService.update(id, userDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable(name = "id") Long id)
+    public ResponseEntity<HttpStatus> delete(@PathVariable(name = "id") String id)
             throws Exception {
         userService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);

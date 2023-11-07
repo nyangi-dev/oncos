@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class ImageUploader {
 
-    private static final String STORE_PATH = System.getProperty("user.dir") + "/images";
+    private static final String STORE_PATH = System.getProperty("user.dir") + "images";
     private static final String DELIMITER = "/";
     
     public Image upload(MultipartFile multipartFile, String dirName) throws Exception {

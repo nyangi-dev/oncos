@@ -12,23 +12,50 @@ public class UserDto {
     @NoArgsConstructor @AllArgsConstructor
     public static class Request {
         String email;
-        String username;
+        String name;
         String password;
+        Integer tier;
+        Integer exp;
+        Integer limExp;
+        String units;
+        String badges;
+        Integer point;
+        String bgs;
 
-        MultipartFile image;
+        MultipartFile avatar;
     }
 
     @Getter @Setter
     @NoArgsConstructor @AllArgsConstructor
     public static class Response {
+        String id;
         String email;
-        String username;
+        String name;
+        String password;
+        Integer tier;
+        Integer exp;
+        Integer limExp;
+        String units;
+        String badges;
+        Integer point;
+        String bgs;
 
-        String imagePath;
+        String avatar;
+
         public Response (User user) {
-            this.username = user.getUsername();
+            this.id = user.getId();
+            this.name = user.getName();
             this.email = user.getEmail();
-            this.imagePath = user.getImagePath();
+            this.password = user.getPassword();
+            this.tier = user.getTier();
+            this.exp = user.getExp();
+            this.limExp = user.getLimExp();
+            this.units = user.getUnits();
+            this.badges = user.getBadges();
+            this.point = user.getPoint();
+            this.bgs = user.getBgs();
+
+            this.avatar = user.getAvatar();
         }
     }
 }

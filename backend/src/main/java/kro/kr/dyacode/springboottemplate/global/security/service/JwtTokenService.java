@@ -13,7 +13,7 @@ public class JwtTokenService {
 
     Key key = Keys.hmacShaKeyFor(secret.getBytes());
 
-    public String createToken(Long id) {
+    public String createToken(String id) {
         return Jwts
                 .builder()
                 .claim("id", id)
@@ -21,7 +21,7 @@ public class JwtTokenService {
                 .compact();
     }
 
-    public Long getId (String token) {
+    public String getId (String token) {
         Claims claims = Jwts
                 .parserBuilder()
                 .setSigningKey(key)
@@ -29,7 +29,7 @@ public class JwtTokenService {
                 .parseClaimsJws(token)
                 .getBody();
 
-        return claims.get("id", Long.class);
+        return claims.get("id", String.class);
     }
 
     public boolean validate (String token) {
