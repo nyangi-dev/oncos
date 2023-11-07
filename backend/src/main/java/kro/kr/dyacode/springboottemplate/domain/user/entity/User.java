@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "user")
+@Entity()
 @Getter
 @NoArgsConstructor @AllArgsConstructor
 public class User {

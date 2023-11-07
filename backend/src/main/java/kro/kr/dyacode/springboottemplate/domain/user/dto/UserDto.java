@@ -41,7 +41,6 @@ public class UserDto {
         String bgs;
 
         String avatar;
-
         public Response (User user) {
             this.id = user.getId();
             this.name = user.getName();
