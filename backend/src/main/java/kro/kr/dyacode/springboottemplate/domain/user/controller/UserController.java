@@ -50,8 +50,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable(name = "id") String id)
-            throws Exception {
+    public ResponseEntity<HttpStatus> delete(@PathVariable(name = "id") String id) {
         userService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
