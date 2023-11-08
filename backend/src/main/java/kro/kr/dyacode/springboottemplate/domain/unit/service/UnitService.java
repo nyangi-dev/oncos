@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service @RequiredArgsConstructor
 public class UnitService {
@@ -24,9 +24,9 @@ public class UnitService {
         return new UnitDto.Response(unitRepository.findById(id).orElseThrow(NotFoundException::new));
     }
 
-    // searchBySkill
-    public Optional<Unit> searchBySkill(String skill) {
-        return unitRepository.findBySkill(skill);
+    // search
+    public List<Unit> search(String word) {
+        return unitRepository.findByName(word);
     }
 
     // update

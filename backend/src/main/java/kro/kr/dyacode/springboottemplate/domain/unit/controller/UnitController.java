@@ -30,10 +30,10 @@ public class UnitController {
         return new ResponseEntity<>(unitDto, HttpStatus.OK);
     }
 
-//    @GetMapping("/search/{skill}")
-//    public ResponseEntity<?> searchByLang(@PathVariable(name = "skill") String skill) {
-//        return new ResponseEntity<Optional<Unit>>(unitService.searchBySkill(skill));
-//    }
+    @GetMapping("/search/{word}")
+    public List<Unit> search(@PathVariable("word") String word) {
+        return unitService.search(word);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<HttpStatus> update(@PathVariable(name = "id") String id, UnitDto.Request unitDto)
